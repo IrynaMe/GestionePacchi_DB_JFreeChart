@@ -1,0 +1,40 @@
+Realizzare un’applicazione che con un sensore:
+raccolga (simulando) le informazioni relative al passaggio di pacchi
+per un certo punto di un nastro trasportatore.
+
+I pacchi possono avere un peso che va da 1 grammo a 10 kg:
+per pacchi di un grammo il peso è convertito in 1Kg,
+pacchi di peso superiore devono essere segnalati (magari con una specifica eccezione) e conteggiati.
+
+L’applicazione deve raccogliere informazioni su:
+momento (hh:mm:ss)  del passaggio
+peso del pacco (solo quelli < 10 kg)
+apporre un codice alfanumerico così formattato:
+LL-NNNNN (l->lettera N-> Numero) che deve essere generato a caso e mai uguale al precedente
+
+L’orario di lavoro va dalle 8.00 alle 24.00 di ogni giorno.
+Le informazioni devono essere registrate su una tabella di database per essere recuperate al fine di:
+determinare quanti pacchi sono transitati ogni ora;
+quanti pacchi hanno un peso superiore ai 5 kg;
+report grafico (con grafico a barre o torta) del passaggio per ogni ora.
+
+
+Nota: per simulazione del passaggio pacchi si può prevedere
+un numero minimo e massimo per ogni ora: esempio min 5 e max 20.
+
+=========================================================
+Struttura applicazione:
+una classe che si occupa di gestire il database ( con connessione e scrittura degli eventi su una tabella)
+classe NastroTrasportatore che si occupa di:
+elabora le informazioni sui pacchi
+
+
+Creiamo un database : nastrotrasportatore
+
+create table gest_pacchi(
+id int not null auto_increment primary key,
+tempo varchar(8) not null,
+peso int(20) not null,
+codice varchar(8) not null unique);
+
+
